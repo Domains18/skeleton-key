@@ -15,3 +15,6 @@ figlet "Docker Installer"
 echo "Starting Script"
 
 # install docker
+sudo apt update -y
+
+
