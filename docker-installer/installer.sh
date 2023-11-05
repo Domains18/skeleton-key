@@ -9,7 +9,7 @@ if ! command -v  &> /dev/null; then
     echo "installing figlet -y"
 
 else 
-    echo "figlet is installed"
+    # echo "figlet is installed"
 fi
 
 figlet "Docker Installer"
