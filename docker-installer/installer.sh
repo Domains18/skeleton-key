@@ -7,8 +7,7 @@ if ! command -v  &> /dev/null; then
     alias kernel-update="sudo apt update -y"
     kernel-update
     echo "installing figlet -y"
-
-else 
+ 
     # echo "figlet is installed"
 fi
 
