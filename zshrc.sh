@@ -8,7 +8,7 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="wedisagree"
+ZSH_THEME="smt"
 plugins=(
 	git
 	zsh-autosuggestions
@@ -39,16 +39,24 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/emulator
 alias air='$(go env GOPATH)/bin/air'  
-alias pushdb="pnpx prisma generate && pnpx prisma db push"
+alias start:dev='pnpm run start:dev'
+alias dev='pnpm run dev'
 
  zstyle ':omz:update' mode auto 
 
+alias app-logs="gcloud app logs tail -s default"
+alias deploy="gcloud app deploy"
 alias cl="clear"
-alias github="cd ~/Documents/Github"
-alias generate="npx prisma generate"
-alias db-push="npx prisma db push"
-alias copy="xclip -selection c < "
-#alias copy="pbcopy < "
+alias github="cd ~/Documents/github"
+alias contracts="cd ~/Documents/github/contracts"
+alias lml="cd ~/Documents/github/employments/lmldigitals/"
+alias recess="cd ~/Documents/github/employments/recess/"
+alias mtokaa="cd ~/Documents/github/contracts/mtokaaHero/"
+alias nerds="cd ~/Documents/github/nerds"
+alias generate="pnpx prisma generate"
+alias db-push="pnpx prisma db push"
+#alias copy="xclip -selection c < "
+alias copy="pbcopy < "
 alias gen="npx prisma generate"
 alias dbpush="npx prisma db push"
 alias gen-p="npx prisma generate && npx prisma db push"
@@ -57,7 +65,7 @@ alias ncim="nvim"
 alias upgrade="sudo apt update && sudo apt upgrade -y"
 [ -f "/Users/alphauser/.ghcup/env" ] && source "/Users/alphauser/.ghcup/env" # ghcup-env
 
-# bun completions
+# bun compleions
 [ -s "/Users/alphauser/.bun/_bun" ] && source "/Users/alphauser/.bun/_bun"
 
 # bun
@@ -74,16 +82,12 @@ export NVM_DIR="$HOME/.nvm"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# pnpm
-export PNPM_HOME="/home/alpha/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+
+export PATH=/usr/local/nodejs/bin:$PATH
+
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/alpha/google-cloud-sdk/path.zsh.inc' ]; then . '/home/alpha/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/home/kemboi/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/kemboi/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/alpha/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/alpha/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/home/kemboi/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/kemboi/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
