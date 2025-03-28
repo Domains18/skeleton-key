@@ -8,12 +8,8 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="smt"
-plugins=(
-	git
-	zsh-autosuggestions
-)
-
+ZSH_THEME="random"
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -41,7 +37,6 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 alias air='$(go env GOPATH)/bin/air'  
 alias start:dev='pnpm run start:dev'
 alias dev='pnpm run dev'
-
  zstyle ':omz:update' mode auto 
 
 alias app-logs="gcloud app logs tail -s default"
@@ -51,12 +46,13 @@ alias github="cd ~/Documents/github"
 alias contracts="cd ~/Documents/github/contracts"
 alias lml="cd ~/Documents/github/employments/lmldigitals/"
 alias recess="cd ~/Documents/github/employments/recess/"
+alias gradegenie="/home/alphauser/Documents/github/employments/gradegenie"
 alias mtokaa="cd ~/Documents/github/contracts/mtokaaHero/"
 alias nerds="cd ~/Documents/github/nerds"
 alias generate="pnpx prisma generate"
 alias db-push="pnpx prisma db push"
-#alias copy="xclip -selection c < "
-alias copy="pbcopy < "
+alias copy="xclip -selection c < "
+#alias copy="pbcopy < "
 alias gen="npx prisma generate"
 alias dbpush="npx prisma db push"
 alias gen-p="npx prisma generate && npx prisma db push"
@@ -91,3 +87,14 @@ if [ -f '/home/kemboi/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/kemboi/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/kemboi/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# bun completions
+[ -s "/home/alphauser/.bun/_bun" ] && source "/home/alphauser/.bun/_bun"
+
+# pnpm
+export PNPM_HOME="/home/alphauser/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
