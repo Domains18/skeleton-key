@@ -8,7 +8,7 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="random"
+ZSH_THEME="fino-time"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete)
 source $ZSH/oh-my-zsh.sh
 
@@ -46,6 +46,7 @@ alias github="cd ~/Documents/github"
 alias contracts="cd ~/Documents/github/contracts"
 alias lml="cd ~/Documents/github/employments/lmldigitals/"
 alias recess="cd ~/Documents/github/employments/recess/"
+alias lipaworld="~/Documents/github/employments/lipaworld"
 alias gradegenie="/home/alphauser/Documents/github/employments/gradegenie"
 alias mtokaa="cd ~/Documents/github/contracts/mtokaaHero/"
 alias nerds="cd ~/Documents/github/nerds"
@@ -82,12 +83,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 export PATH=/usr/local/nodejs/bin:$PATH
 
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/kemboi/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/kemboi/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/kemboi/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/kemboi/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
 # bun completions
 [ -s "/home/alphauser/.bun/_bun" ] && source "/home/alphauser/.bun/_bun"
 
@@ -98,3 +93,10 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/opt/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/google-cloud-sdk/completion.zsh.inc'; fi
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
