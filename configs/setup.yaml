@@ -1,0 +1,60 @@
+version: "1.0"
+distros:
+  - ubuntu
+  - fedora
+  - arch
+
+profiles:
+  default:
+    - development
+    - editors
+    - databases
+  minimal:
+    - development
+  full:
+    - development
+    - editors
+    - databases
+    - docker
+    - kubernetes
+
+packages:
+  development:
+    apt:
+      - build-essential
+      - git
+      - curl
+    snap:
+      - go --classic
+      - node --classic
+    custom:
+      - name: rust
+        script: "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
+
+  editors:
+    apt:
+      - neovim
+    snap:
+      - code --classic
+    config:
+      vscode:
+        extensions:
+          - golang.go
+          - rust-lang.rust-analyzer
+        settings: configs/editors/vscode.yaml
+
+  databases:
+    apt:
+      - postgresql
+      - redis-server
+    docker:
+      - postgres:16-alpine
+      - mongodb:7
+      - redis:alpine
+
+dotfiles:
+  repo: "https://github.com/yourusername/dotfiles"
+  files:
+    - .zshrc
+    - .gitconfig
+    - .tmux.conf
