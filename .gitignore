@@ -1,1 +1,46 @@
-.vscode
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+*.wasm
+*.o
+*.cgo1.go
+*.cgo2.c
+*.syso
+
+# Test binary, generated with `go test -c`
+*.test
+
+# Output of the go build command
+# For projects that produce a single binary, you might include the binary name
+# For example: myapp
+# If your project builds multiple binaries, you might use a pattern like:
+# /bin/
+# /out/
+# Alternatively, you can explicitly list each binary name if they are known.
+
+# Dependency directories (vendor)
+# This is common if you are manually managing dependencies or using older Go versions.
+# Modern Go modules typically handle dependencies within the module cache.
+vendor/
+
+# Go module cache
+# This is usually located outside the project directory, but if you've configured it
+# to be within the project, you might need to ignore it.
+.go-build/
+.cache/go-build/
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+
+# Log files
+*.log
+
+# Environment variables and sensitive data
+.env
+.env.*
