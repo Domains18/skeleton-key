@@ -9,5 +9,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.30.3"
+  "packageManager": "pnpm@10.30.3",
+  "devDependencies": {
+    "@biomejs/biome": "2.4.10",
+    "prettier": "3.8.1"
+  }
 }
