@@ -2,6 +2,8 @@
 
 
 const os = require('os');
+const chalk = require('chalk');
+
 
 //detect OS
 const platform = os.platform();
@@ -22,4 +24,5 @@ console.log('intitializing skeleton key...');
 if (platform === 'win32') {
     throw new Error('Windows is not supported');
 }
+
 
