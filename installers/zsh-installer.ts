@@ -2,9 +2,9 @@ import commandExists from "../lib";
 import chalk from 'chalk'
 import { $ } from 'bun'
 
-
+//things like brew are to be assumed installed as it will be handled before callable
 export class ZshInstaller {
-    constructor(private os: string) {}
+    constructor(private os: string) { }
     public async callable() {
         if (commandExists("zsh")) {
             console.log(chalk.blue("skipping zsh installation"))
@@ -12,11 +12,6 @@ export class ZshInstaller {
         } else {
             switch (this.os) {
                 case 'darwin':
-                    //check if brew is installed
-                    if (!commandExists('brew')) {
-                        console.log('brew not installed, installing it')
-                        await this.installBrewOnMacAndAddToPath()
-                    }
                     await this.installZsh(this.os)
                     break;
                 case 'linux':
@@ -28,27 +23,6 @@ export class ZshInstaller {
             }
         }
     }
-
-
-
-    private async installBrewOnMacAndAddToPath() {
-        try {
-            await $`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-        } catch (error) {
-            console.log(chalk.red("failed to install brew"))
-            console.log(error)
-        }
-
-        //add brew to path
-        try {
-            await $`eval "$(/opt/homebrew/bin/brew shellenv)"`
-        } catch (error) {
-            console.log(chalk.red("failed to add brew to path"))
-            console.log(error)
-        }
-    }
-
-
 
     private async installZsh(os: string) {
         switch (os) {
