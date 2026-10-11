@@ -1,9 +1,9 @@
 import subprocess
 import typer
-from bootstrap.config import TARGET_DIRECTORIES, PACKAGES, MACOS_CASKS, DOTFILES_MAPPINGS
+from bootstrap.config import TARGET_DIRECTORIES, PACKAGES, MACOS_CASKS, DOTFILES_MAPPING
 from bootstrap.utils import detect_os, run_command, copy_file
 
-def boostrap_directories() -> None:
+def bootstrap_directories() -> None:
     typer.secho("Bootstrapping directories...")
     for directory in TARGET_DIRECTORIES:
         if not directory.exists():
@@ -40,6 +40,6 @@ def bootstrap_packages() -> None:
             
 def boostrap_dotfiles() -> None:
     typer.secho("Bootstrapping dotfiles...")
-    for source, destination in DOTFILES_MAPPINGS.items():
+    for source, destination in DOTFILES_MAPPING.items():
         copy_file(destination, destination)
         return

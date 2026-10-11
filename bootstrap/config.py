@@ -24,11 +24,11 @@ MACOS_CASKS = [
 
 
 
-DOTFILES = Path(__file__).parent.parent / "dotfiles"
+DOTFILES_DIR = Path(__file__).parent.parent / "dotfiles"
 
-DOTFILES_MAPPINGS = {
-    ".zshrc": DOTFILES / "zsh" / ".zshrc",
-    ".gitconfig": DOTFILES / "git" / ".gitconfig",
-    ".gitignore_global": DOTFILES / "git" / ".gitignore_global",
-    ".vimrc": DOTFILES / "vim" / ".vimrc",
+DOTFILES_MAPPING = {
+    ".zshrc": DOTFILES_DIR / "zsh" / ".zshrc",
+    ".gitconfig": DOTFILES_DIR / "git" / ".gitconfig",
+    ".gitignore_global": DOTFILES_DIR / "git" / ".gitignore_global",
+    ".vimrc": DOTFILES_DIR / "vim" / ".vimrc",
 }
