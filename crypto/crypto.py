@@ -6,14 +6,6 @@ from cryptography.hazmat.primitives.kdf.hkdf import HKDF
 from cryptography.hazmat.primitives.asymmetric import x25519
 from cryptography.hazmat.primitives import serialization
 
-"""_summary_
-    1. key exhanges;
-    the old pc and the new pc will generate a shared secret key using the X25519 algorithm. This key will be used to encrypt and decrypt the data during the transfer process.
-    2. key derivation;
-    the shared secret key will be used to derive a symmetric encryption key using the HKDF (HMAC-based Key Derivation Function) with SHA-256 as the hash function. This derived key will be used for encrypting and decrypting the data.
-    3. data encryption;
-    the data to be transferred will be encrypted using the AES-GCM (Advanced Encryption Standard in Galois/Counter Mode) algorithm with the derived symmetric key. AES-GCM provides both confidentiality and integrity for the encrypted data.
-"""
 class TransferCrypto:
     """handles stateful Ephemeral ECDH key exchange and AES-GCM encruption for a pc to pc dotfile transfer"""
     
