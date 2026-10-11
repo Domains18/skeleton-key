@@ -7,3 +7,4 @@ DOTFILES_DIR.mkdir(exist_ok=True)
 
 from bootstrap.cli import app
 app()
+ 
