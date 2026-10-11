@@ -1,2 +1,4 @@
 typer
 cryptography
+zeroconf
+network
