@@ -1,5 +1,4 @@
-typer
-cryptography
-zeroconf
-network
-flask
+cryptography>=41.0.0
+zeroconf>=0.130.0
+flask>=3.0.0
+pytest>=7.0.0

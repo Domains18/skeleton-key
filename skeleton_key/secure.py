@@ -159,21 +159,28 @@ class SecureChannel:
 
 def host_handshake(sock: socket.socket, pin: str, timeout: float = 60) -> SecureChannel:
     sock.settimeout(timeout)
-    priv = x25519.X25519PrivateKey.generate()
-    host_pub = _pub_bytes(priv)
-    sock.sendall(MAGIC + host_pub)
-    hello = _recv_exact(sock, len(MAGIC) + 32)
-    if hello[: len(MAGIC)] != MAGIC:
-        raise ProtocolError("not a skeleton-key client")
-    client_pub = hello[len(MAGIC):]
-    shared = priv.exchange(x25519.X25519PublicKey.from_public_bytes(client_pub))
-    k_h2c, k_c2h, sas = _derive(shared, host_pub, client_pub, pin)
-    ch = SecureChannel(sock, k_h2c, k_c2h, b"H", b"C", sas)
-    if ch.recv().get("type") != "confirm":
-        raise ProtocolError("bad confirmation")
-    ch.send({"type": "confirm-ok"})
-    sock.settimeout(300)
-    return ch
+    try:
+        priv = x25519.X25519PrivateKey.generate()
+        host_pub = _pub_bytes(priv)
+        sock.sendall(MAGIC + host_pub)
+        hello = _recv_exact(sock, len(MAGIC) + 32)
+        if hello[: len(MAGIC)] != MAGIC:
+            raise ProtocolError("not a skeleton-key client")
+        client_pub = hello[len(MAGIC):]
+        shared = priv.exchange(x25519.X25519PublicKey.from_public_bytes(client_pub))
+        k_h2c, k_c2h, sas = _derive(shared, host_pub, client_pub, pin)
+        ch = SecureChannel(sock, k_h2c, k_c2h, b"H", b"C", sas)
+        if ch.recv().get("type") != "confirm":
+            raise ProtocolError("bad confirmation")
+        ch.send({"type": "confirm-ok"})
+        sock.settimeout(300)
+        return ch
+    except Exception:
+        try:
+            sock.close()
+        except OSError:
+            pass
+        raise
 
 
 def client_handshake(sock: socket.socket, pin: str, timeout: float = 30) -> SecureChannel:

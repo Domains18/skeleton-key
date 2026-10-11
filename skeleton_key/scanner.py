@@ -14,7 +14,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import asdict, dataclass, field
 
-from .skeleton_key import catalog
+from . import catalog
 from .adapters import AdaptContext, adapt, is_text
 from .config import HostConfig
 from .platforms import Profile, relocate

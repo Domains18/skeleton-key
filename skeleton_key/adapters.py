@@ -111,9 +111,9 @@ def rewrite_paths(text: str, ctx: AdaptContext) -> tuple[str, list[str]]:
 # command/tool rewriting (cross-OS only)
 # ---------------------------------------------------------------------------
 _XCLIP = re.compile(
-    r"\bxclip((?:\s+-(?:selection|sel)\s+(?:clipboard|clip|c|primary|p|secondary|s)\b|\s+-(?:o|out|i|in)\b)+)"
+    r"\bxclip((?:\s+-(?:selection|sel)\s+(?:clipboard|clip|c|primary|p|secondary|s)\b|\s+-(?:o|out|i|in)\b)*)"
 )
-_XSEL = re.compile(r"\bxsel((?:\s+(?:--clipboard|--output|--input|-[bio]{1,2})\b)+)")
+_XSEL = re.compile(r"\bxsel((?:\s+(?:--clipboard|--output|--input|-[bio]{1,2})\b)*)")
 _ZSH_PLUGINS = re.compile(
     r"/usr/share/(zsh-autosuggestions|zsh-syntax-highlighting|zsh-history-substring-search|"
     r"zsh-theme-powerlevel10k|powerlevel10k)(?=/)"
@@ -247,3 +247,12 @@ def adapt(rel: str, data: bytes, ctx: AdaptContext) -> AdaptResult:
     if new != text:
         result.data = new.encode("utf-8")
     return result
+
+
+def compute_diff(original: str, adapted: str, fromfile: str = "original", tofile: str = "adapted") -> str:
+    """Generate a unified diff between original and adapted text."""
+    import difflib
+    lines1 = original.splitlines(keepends=True)
+    lines2 = adapted.splitlines(keepends=True)
+    diff = difflib.unified_diff(lines1, lines2, fromfile=fromfile, tofile=tofile)
+    return "".join(diff)
